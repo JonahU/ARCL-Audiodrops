@@ -33,6 +33,9 @@ class ViewController: UIViewController, MKMapViewDelegate {
     
     var infoLabel = UILabel()
     var updateInfoLabelTimer: Timer?
+    
+    private var allSongs: [Song] = LibraryAPI.shared.getSongs()
+    var count: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +63,9 @@ class ViewController: UIViewController, MKMapViewDelegate {
         let location = CLLocation(coordinate: coordinate, altitude: 0)
         let dropLocationNode = LocationAnnotationNode(location: location, image: #imageLiteral(resourceName: "drop"))
         addLocationNode(locationNode: dropLocationNode)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        sceneLocationView.addGestureRecognizer(tapGesture)
         
         view.addSubview(sceneLocationView)
         
@@ -93,8 +99,14 @@ class ViewController: UIViewController, MKMapViewDelegate {
             let touchPoint = gestureRecognizer.location(in: mapView)
             let newCoordinates = mapView.convert(touchPoint, toCoordinateFrom: mapView)
             let location = CLLocation(coordinate: newCoordinates, altitude: 0)
-            let locationNode = LocationAnnotationNode(location: location, image: #imageLiteral(resourceName: "pin"))
-            addLocationNode(locationNode: locationNode)
+            //let locationNode = LocationAnnotationNode(location: location, image: #imageLiteral(resourceName: "pin"))
+            
+            let song = allSongs[count]
+            count += count
+            let audioNode  = AudioDrop(location: location, song: song)
+            audioNode.scaleRelativeToDistance = false
+//            addLocationNode(locationNode: locationNode)
+            addLocationNode(locationNode: audioNode)
         }
     }
     
@@ -171,6 +183,43 @@ class ViewController: UIViewController, MKMapViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    @objc func handleTap(_ gestureRecognize: UIGestureRecognizer){
+        //check what nodes are tap
+        let p = gestureRecognize.location(in: sceneLocationView)
+        let hitResults = sceneLocationView.hitTest(p, options: [:])
+        
+        //check that we clicked on at least one object
+        if hitResults.count > 0 {
+            //retrieved the first clicked object
+            let result = hitResults[0]
+            
+            //get its material
+            let material = result.node.geometry!.firstMaterial!
+            
+            //highlight it
+            SCNTransaction.begin()
+            SCNTransaction.animationDuration = 0.5
+            
+            //on completetion - unhighlight
+            SCNTransaction.completionBlock = {
+                SCNTransaction.begin()
+                SCNTransaction.animationDuration = 0.5
+                
+                material.emission.contents = UIColor.black
+                
+                SCNTransaction.commit()
+            }
+            
+            material.emission.contents = UIColor.red
+            
+            SCNTransaction.commit()
+        } else {
+            let pinLocationNode = LocationAnnotationNode(location: nil, image: #imageLiteral(resourceName: "pin"))
+            pinLocationNode.continuallyAdjustNodePositionWhenWithinRange = false
+            addLocationNode(locationNode: pinLocationNode)
+        }
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         
@@ -179,8 +228,8 @@ class ViewController: UIViewController, MKMapViewDelegate {
                 if (mapView == touch.view! || mapView.recursiveSubviews().contains(touch.view!)) {
                     centerMapOnUserLocation = false
                 } else {
-                    let pinLocationNode = LocationAnnotationNode(location: nil, image: #imageLiteral(resourceName: "pin"))
-                    addLocationNode(locationNode: pinLocationNode)
+                    //let pinLocationNode = LocationAnnotationNode(location: nil, image: #imageLiteral(resourceName: "pin"))
+                    //addLocationNode(locationNode: pinLocationNode)
                 }
             }
         }
@@ -285,7 +334,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
                 marker.glyphImage = UIImage(named: "compass")
             } else {
                 marker.displayPriority = .required
-                marker.glyphImage = UIImage(named: "pin")
+                marker.glyphImage = UIImage(named: "audio")
             }
             
             return marker

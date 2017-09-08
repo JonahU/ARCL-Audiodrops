@@ -12,13 +12,16 @@
 		223468421F5729790071F664 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 223468401F5729790071F664 /* Main.storyboard */; };
 		223468441F5729790071F664 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 223468431F5729790071F664 /* Assets.xcassets */; };
 		223468471F5729790071F664 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 223468451F5729790071F664 /* LaunchScreen.storyboard */; };
-		2266EFC01F5F52B50076FEF2 /* DropLocationNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2266EFBF1F5F52B50076FEF2 /* DropLocationNode.swift */; };
 		2266EFC21F5F55030076FEF2 /* AudioDrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2266EFC11F5F55030076FEF2 /* AudioDrop.swift */; };
 		2271AC4A1F572F9100FE3948 /* Pods_ARKit_CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2271AC4B1F572F9100FE3948 /* Pods_ARKit_CoreLocation.framework */; };
 		2271AC4D1F5731B500FE3948 /* ARKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2271AC4C1F5731B500FE3948 /* ARKit.framework */; };
 		2271AC4F1F5731BB00FE3948 /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2271AC4E1F5731BB00FE3948 /* SceneKit.framework */; };
 		2271AC511F5731C300FE3948 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2271AC501F5731C300FE3948 /* MapKit.framework */; };
 		2271AC531F5731C900FE3948 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2271AC521F5731C900FE3948 /* CoreLocation.framework */; };
+		227A83D61F631DF000F6678A /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A83D51F631DF000F6678A /* Song.swift */; };
+		227A83D81F6323B600F6678A /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A83D71F6323B600F6678A /* DummyData.swift */; };
+		227A83DA1F6327F500F6678A /* LibraryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A83D91F6327F500F6678A /* LibraryAPI.swift */; };
+		227A83DE1F63288000F6678A /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A83DD1F63288000F6678A /* HTTPClient.swift */; };
 		227FC44B1F5734E500A9BEF5 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223468591F572BC40071F664 /* CGPoint+Extensions.swift */; };
 		227FC44C1F5734E500A9BEF5 /* CLLocation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2234685A1F572BC40071F664 /* CLLocation+Extensions.swift */; };
 		227FC44D1F5734E500A9BEF5 /* FloatingPoint+Radians.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223468561F572BC30071F664 /* FloatingPoint+Radians.swift */; };
@@ -49,13 +52,16 @@
 		223468581F572BC40071F664 /* SceneLocationEstimate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneLocationEstimate.swift; sourceTree = "<group>"; };
 		223468591F572BC40071F664 /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
 		2234685A1F572BC40071F664 /* CLLocation+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocation+Extensions.swift"; sourceTree = "<group>"; };
-		2266EFBF1F5F52B50076FEF2 /* DropLocationNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropLocationNode.swift; sourceTree = "<group>"; };
 		2266EFC11F5F55030076FEF2 /* AudioDrop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioDrop.swift; sourceTree = "<group>"; };
 		2271AC4B1F572F9100FE3948 /* Pods_ARKit_CoreLocation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_ARKit_CoreLocation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2271AC4C1F5731B500FE3948 /* ARKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ARKit.framework; path = System/Library/Frameworks/ARKit.framework; sourceTree = SDKROOT; };
 		2271AC4E1F5731BB00FE3948 /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
 		2271AC501F5731C300FE3948 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		2271AC521F5731C900FE3948 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		227A83D51F631DF000F6678A /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		227A83D71F6323B600F6678A /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
+		227A83D91F6327F500F6678A /* LibraryAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryAPI.swift; sourceTree = "<group>"; };
+		227A83DD1F63288000F6678A /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,15 +100,15 @@
 		2234683B1F5729790071F664 /* ARKit-CoreLocation Demo */ = {
 			isa = PBXGroup;
 			children = (
+				223468451F5729790071F664 /* LaunchScreen.storyboard */,
+				223468401F5729790071F664 /* Main.storyboard */,
+				223468481F5729790071F664 /* Info.plist */,
+				223468431F5729790071F664 /* Assets.xcassets */,
 				223468501F572B780071F664 /* Source */,
 				2234683C1F5729790071F664 /* AppDelegate.swift */,
 				2234683E1F5729790071F664 /* ViewController.swift */,
-				223468401F5729790071F664 /* Main.storyboard */,
-				223468431F5729790071F664 /* Assets.xcassets */,
-				223468451F5729790071F664 /* LaunchScreen.storyboard */,
-				223468481F5729790071F664 /* Info.plist */,
-				2266EFBF1F5F52B50076FEF2 /* DropLocationNode.swift */,
-				2266EFC11F5F55030076FEF2 /* AudioDrop.swift */,
+				2296A0541F632DBD00147830 /* AudioDrops */,
+				2296A0531F632CFC00147830 /* Data Handling */,
 			);
 			path = "ARKit-CoreLocation Demo";
 			sourceTree = "<group>";
@@ -134,6 +140,25 @@
 				2271AC4B1F572F9100FE3948 /* Pods_ARKit_CoreLocation.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2296A0531F632CFC00147830 /* Data Handling */ = {
+			isa = PBXGroup;
+			children = (
+				227A83D71F6323B600F6678A /* DummyData.swift */,
+				227A83D91F6327F500F6678A /* LibraryAPI.swift */,
+				227A83DD1F63288000F6678A /* HTTPClient.swift */,
+			);
+			path = "Data Handling";
+			sourceTree = "<group>";
+		};
+		2296A0541F632DBD00147830 /* AudioDrops */ = {
+			isa = PBXGroup;
+			children = (
+				2266EFC11F5F55030076FEF2 /* AudioDrop.swift */,
+				227A83D51F631DF000F6678A /* Song.swift */,
+			);
+			path = AudioDrops;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,17 +233,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				227A83D81F6323B600F6678A /* DummyData.swift in Sources */,
 				227FC44B1F5734E500A9BEF5 /* CGPoint+Extensions.swift in Sources */,
 				227FC44C1F5734E500A9BEF5 /* CLLocation+Extensions.swift in Sources */,
+				227A83DA1F6327F500F6678A /* LibraryAPI.swift in Sources */,
 				227FC44D1F5734E500A9BEF5 /* FloatingPoint+Radians.swift in Sources */,
-				2266EFC01F5F52B50076FEF2 /* DropLocationNode.swift in Sources */,
 				227FC44E1F5734E500A9BEF5 /* LocationManager.swift in Sources */,
 				2266EFC21F5F55030076FEF2 /* AudioDrop.swift in Sources */,
 				227FC44F1F5734E500A9BEF5 /* LocationNode.swift in Sources */,
 				227FC4501F5734E500A9BEF5 /* SceneLocationEstimate.swift in Sources */,
 				227FC4511F5734E500A9BEF5 /* SceneLocationEstimate+Extensions.swift in Sources */,
+				227A83D61F631DF000F6678A /* Song.swift in Sources */,
 				227FC4521F5734E500A9BEF5 /* SceneLocationView.swift in Sources */,
 				227FC4531F5734E500A9BEF5 /* SCNNode+Extensions.swift in Sources */,
+				227A83DE1F63288000F6678A /* HTTPClient.swift in Sources */,
 				227FC4541F5734E500A9BEF5 /* SCNVector3+Extensions.swift in Sources */,
 				2234683F1F5729790071F664 /* ViewController.swift in Sources */,
 				2234683D1F5729790071F664 /* AppDelegate.swift in Sources */,
