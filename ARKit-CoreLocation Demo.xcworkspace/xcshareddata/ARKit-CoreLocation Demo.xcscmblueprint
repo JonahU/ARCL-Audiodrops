@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "7C999B4399C6E9D14AD95EDB6200A317EDA09944",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "7610E33E698D15F02A841C1DFF47CF9074777398" : 9223372036854775807,
+    "7C999B4399C6E9D14AD95EDB6200A317EDA09944" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "3768A887-9BE1-4B09-9183-A2640B67E1B1",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "7610E33E698D15F02A841C1DFF47CF9074777398" : "Projects\/ARKit-CoreLocation\/ARKit-CoreLocation\/",
+    "7C999B4399C6E9D14AD95EDB6200A317EDA09944" : "Projects\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "ARKit-CoreLocation Demo",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "ARKit-CoreLocation AudioDrops Demo\/ARKit-CoreLocation Demo\/ARKit-CoreLocation Demo.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/shi11\/ARKit-CoreLocation.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7610E33E698D15F02A841C1DFF47CF9074777398"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/JonahU\/DownTime.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7C999B4399C6E9D14AD95EDB6200A317EDA09944"
+    }
+  ]
+}
