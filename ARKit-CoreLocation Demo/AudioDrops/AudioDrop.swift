@@ -8,12 +8,41 @@
 
 import UIKit
 import AVFoundation
+import MediaPlayer
 
 class AudioDrop: NSObject {
     var player: AVAudioPlayer?
     
+    let audioPath: URL! = Bundle.main.url(forResource: "song", withExtension: "mp3")
+    
+    var albumArt: UIImage?
+    var trackName: String?
+    var artistName: String?
+    var albumName: String?
+    
+    var song: Song!
+    
+    var downloadTask: URLSessionDownloadTask?
+    
+    required init?(coder aDecoder: NSCoder) {
+       super.init()
+    }
+    
+    func updateAlbumArt() {
+        song.artworkLoaded = false
+        if song.artworkURL.range(of: "http") != nil {
+            if let url = URL(string: song.artworkURL) {
+                
+            }
+        }
+    }
+    
+    
+    
     //TO DO: REORGANISE ME
-    func playSound() {
+    func playSong() {
+        song.isPlaying = true
+        
         guard let url = Bundle.main.url(forResource: "song", withExtension: "mp3") else {
             print("asset not found")
             return
@@ -30,5 +59,9 @@ class AudioDrop: NSObject {
         } catch let error {
             print(error.localizedDescription)
         }
+    }
+    
+    func pauseSong() {
+        song.isPlaying = false
     }
 }
