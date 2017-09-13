@@ -6,7 +6,7 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "Play-50.png",
+      "filename" : "25f3ff_45b2c876925141f2831941331796f294-mv2.jpg",
       "scale" : "2x"
     },
     {
@@ -17,8 +17,5 @@
   "info" : {
     "version" : 1,
     "author" : "xcode"
-  },
-  "properties" : {
-    "template-rendering-intent" : "template"
   }
 }

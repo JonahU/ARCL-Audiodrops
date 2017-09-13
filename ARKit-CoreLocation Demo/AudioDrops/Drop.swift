@@ -13,7 +13,7 @@ import SceneKit
 import CoreLocation
 
 
-class AudioDrop: LocationNode {
+class Drop: LocationNode {
     
 //    let audioPath: URL! = Bundle.main.url(forResource: "song", withExtension: "mp3")
     let song: Song
