@@ -9,8 +9,9 @@
 import UIKit
 import SceneKit
 import MapKit
+import AVFoundation
 
-class ViewController: UIViewController, MKMapViewDelegate {
+class ViewController: UIViewController{
     
     let sceneLocationView = SceneLocationView()
     
@@ -18,7 +19,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
     var userAnnotation: MKPointAnnotation? //user image
     var locationEstimateAnnotation: MKPointAnnotation? //compass image
     let dropAnnotation = MKPointAnnotation() //drop image
-    var dropAdded: Bool = false
+//    let dropAdded: Bool = false
     
     var updateUserLocationTimer: Timer?
     
@@ -33,6 +34,18 @@ class ViewController: UIViewController, MKMapViewDelegate {
     
     var infoLabel = UILabel()
     var updateInfoLabelTimer: Timer?
+    
+    //MARK: -Music Player UI Elements
+    @IBOutlet weak var musicPanel: UIView!
+    @IBOutlet weak var trackLabel: UILabel!
+    @IBOutlet weak var playPauseButton: UIButton!
+    @IBOutlet weak var musicProgressSlider: CustomSlider!
+    @IBOutlet weak var restartButton: UIButton!
+    
+    var musicPanelManager: MusicPanelManager!
+    var audioPlayer: AVAudioPlayer!
+    
+    var restartButtonIsEnabled = true
     
     private var allSongs: [Song] = LibraryAPI.shared.getSongs()
     var count: Int = 0
@@ -59,10 +72,10 @@ class ViewController: UIViewController, MKMapViewDelegate {
         }
         
         //Location: Washington Square Park
-        let coordinate = CLLocationCoordinate2D(latitude: 40.7312, longitude: -73.9971)
-        let location = CLLocation(coordinate: coordinate, altitude: 0)
-        let dropLocationNode = LocationAnnotationNode(location: location, image: #imageLiteral(resourceName: "drop"))
-        addLocationNode(locationNode: dropLocationNode)
+//        let coordinate = CLLocationCoordinate2D(latitude: 40.7312, longitude: -73.9971)
+//        let location = CLLocation(coordinate: coordinate, altitude: 0)
+//        let dropLocationNode = LocationAnnotationNode(location: location, image: #imageLiteral(resourceName: "drop"))
+//        addLocationNode(locationNode: dropLocationNode)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         sceneLocationView.addGestureRecognizer(tapGesture)
@@ -91,55 +104,9 @@ class ViewController: UIViewController, MKMapViewDelegate {
                                                       userInfo: nil,
                                                       repeats: true)
         }
-    }
-    
-    
-    @objc func addSpecificLocationNode(gestureRecognizer: UIGestureRecognizer){
-        if gestureRecognizer.state == UIGestureRecognizerState.began{
-            let touchPoint = gestureRecognizer.location(in: mapView)
-            let newCoordinates = mapView.convert(touchPoint, toCoordinateFrom: mapView)
-            let location = CLLocation(coordinate: newCoordinates, altitude: 0)
-            //let locationNode = LocationAnnotationNode(location: location, image: #imageLiteral(resourceName: "pin"))
-            
-            let song = allSongs[count]
-            count += count
-            let audioNode  = AudioDrop(location: location, song: song)
-            audioNode.scaleRelativeToDistance = false
-//            addLocationNode(locationNode: locationNode)
-            addLocationNode(locationNode: audioNode)
-        }
-    }
-    
-    //adds map pin
-    func addLocationNode(locationNode: LocationNode){
-        if locationNode.location != nil {
-            sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: locationNode)
-            if showMapView{
-                if dropAdded{
-                    let annotation = MKPointAnnotation()
-                    let coordinate = locationNode.location.coordinate
-                    annotation.coordinate = coordinate
-                    
-                    let latitude = coordinate.latitude
-                    let longitude = coordinate.longitude
-                    annotation.title = "\(String(format: "%.4f", latitude)), \(String(format: "%.4f", longitude))"
-                    mapView.addAnnotation(annotation)
-                } else{
-                    dropAnnotation.coordinate = locationNode.location.coordinate
-                    dropAnnotation.title = "Washington Square Park"
-                    mapView.addAnnotation(dropAnnotation)
-                    dropAdded = true
-                }
-            }
-        }else{
-            sceneLocationView.addLocationNodeForCurrentPosition(locationNode: locationNode)
-            if showMapView{
-                let annotation = MKPointAnnotation()
-                annotation.coordinate = (sceneLocationView.currentLocation()?.coordinate)! //discrepancy with constantly updating nodes within 100m
-                annotation.title = "Current Location Node"
-                mapView.addAnnotation(annotation)
-            }
-        }
+        
+        setupMusicPanel()
+        //view.bringSubview(toFront: restartButton) IMPLEMENT BETTER
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -149,13 +116,16 @@ class ViewController: UIViewController, MKMapViewDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
+        audioPlayer.stop()
+        musicPanelManager.pause()
+        
         sceneLocationView.pause()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        //sceneLocationView.frame = view.bounds
         sceneLocationView.frame = CGRect(x: 0,
                                          y: 0,
                                          width: self.view.frame.size.width,
@@ -178,10 +148,72 @@ class ViewController: UIViewController, MKMapViewDelegate {
                                height: self.view.frame.size.height / 2)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    //MARK: -Setup
+
+    func setupMusicPanel(){
+        musicPanelManager = MusicPanelManager(viewController: self)
+        
+        musicPanel.layer.cornerRadius = 3.0
+        musicPanel.clipsToBounds = true
+        musicPanel.isHidden = true
+        trackLabel.text = ""
+        
     }
+    
+    //MARK: -Adding node functions
+    
+    @objc func addSpecificLocationNode(gestureRecognizer: UIGestureRecognizer){
+        if gestureRecognizer.state == UIGestureRecognizerState.began{
+            let touchPoint = gestureRecognizer.location(in: mapView)
+            let newCoordinates = mapView.convert(touchPoint, toCoordinateFrom: mapView)
+            let location = CLLocation(coordinate: newCoordinates, altitude: 0)
+            
+            let song = allSongs[count]
+            print("Count:\(count) - \(song.description)") //for DEBUG
+            if count < allSongs.count - 1{
+                count += 1
+            } else{
+                count = 0
+            }
+            
+            let audioNode  = Drop(location: location, song: song)
+            audioNode.scaleRelativeToDistance = false
+            addLocationNode(locationNode: audioNode)
+        }
+    }
+    
+    //adds map pin
+    func addLocationNode(locationNode: LocationNode){
+        if locationNode.location != nil {
+            sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: locationNode)
+            if showMapView{
+//                if dropAdded{
+                    let annotation = MKPointAnnotation()
+                    let coordinate = locationNode.location.coordinate
+                    annotation.coordinate = coordinate
+                    
+                    let latitude = coordinate.latitude
+                    let longitude = coordinate.longitude
+                    annotation.title = "\(String(format: "%.4f", latitude)), \(String(format: "%.4f", longitude))"
+                    mapView.addAnnotation(annotation)
+//                } else{
+//                    dropAnnotation.coordinate = locationNode.location.coordinate
+//                    dropAnnotation.title = "Washington Square Park"
+//                    mapView.addAnnotation(dropAnnotation)
+//                }
+            }
+        }else{
+            sceneLocationView.addLocationNodeForCurrentPosition(locationNode: locationNode)
+            if showMapView{
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = (sceneLocationView.currentLocation()?.coordinate)! //discrepancy with constantly updating nodes within 100m
+                annotation.title = "Current Location Node"
+                mapView.addAnnotation(annotation)
+            }
+        }
+    }
+    
+    //MARK: -Gesture Recognizers
     
     @objc func handleTap(_ gestureRecognize: UIGestureRecognizer){
         //check what nodes are tap
@@ -213,10 +245,15 @@ class ViewController: UIViewController, MKMapViewDelegate {
             material.emission.contents = UIColor.red
             
             SCNTransaction.commit()
+            
+            guard let drop = result.node.parent else{ //fix up this code (node manager)
+                fatalError("Node is not a drop")
+            }
+            playMusic(drop as! Drop)
         } else {
-            let pinLocationNode = LocationAnnotationNode(location: nil, image: #imageLiteral(resourceName: "pin"))
-            pinLocationNode.continuallyAdjustNodePositionWhenWithinRange = false
-            addLocationNode(locationNode: pinLocationNode)
+//            let pinLocationNode = LocationAnnotationNode(location: nil, image: #imageLiteral(resourceName: "pin"))
+//            pinLocationNode.continuallyAdjustNodePositionWhenWithinRange = false
+//            addLocationNode(locationNode: pinLocationNode)
         }
     }
     
@@ -235,6 +272,8 @@ class ViewController: UIViewController, MKMapViewDelegate {
         }
         
     }
+    
+    //MARK: -Update functions
     
     @objc func updateInfoLabel(){
         if let position = sceneLocationView.currentScenePosition() {
@@ -312,57 +351,34 @@ class ViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
-    //MARK: -MKMapViewDelegate
+    //MARK: -Play Music UI
     
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if annotation is MKUserLocation {
-            return nil
+    func playMusic(_ drop: Drop){
+        let trackName = drop.song.title
+        
+        guard let url = Bundle.main.url(forResource: "\(trackName)", withExtension: "mp3") else {
+            print("song url not found")
+            return
         }
         
-        if let pointAnnotation = annotation as? MKPointAnnotation {
-            let marker = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: nil)
+        do{
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            try AVAudioSession.sharedInstance().setActive(true)
             
-            if pointAnnotation == self.userAnnotation {
-                marker.displayPriority = .required
-                marker.glyphImage = UIImage(named: "user")
-            } else if pointAnnotation == self.dropAnnotation {
-                marker.displayPriority = .required
-                marker.glyphImage = UIImage(named: "drop")
-            }else if pointAnnotation == self.locationEstimateAnnotation {
-                marker.displayPriority = .required
-                marker.markerTintColor = UIColor(hue: 0.267, saturation: 0.67, brightness: 0.77, alpha: 1.0)
-                marker.glyphImage = UIImage(named: "compass")
-            } else {
-                marker.displayPriority = .required
-                marker.glyphImage = UIImage(named: "audio")
-            }
+            audioPlayer = try AVAudioPlayer(contentsOf: url)
+            guard let audioPlayer = audioPlayer else { return }
             
-            return marker
+            audioPlayer.play()
+            musicPanelManager.showNewMusicInfo(trackName: "\(drop.song.title)", artistName: "\(drop.song.artist)")
+        } catch let error {
+            print(error.localizedDescription)
         }
         
-        return nil
-    }
-    
-    //MARK: Orientation Indicator (blue arrow) funcs
-    func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
-        if views.last?.annotation is MKUserLocation {
-            addHeadingView(toAnnotationView: views.last!)
-        }
-    }
 
-    func addHeadingView(toAnnotationView annotationView: MKAnnotationView){
-        if headingImageView == nil{
-            let image = UIImage(named: "bluearrow")
-            headingImageView = UIImageView(image: image)
-            headingImageView!.frame = CGRect(x: (annotationView.frame.size.width - (image?.size.width)!)/2,
-                                         y: (annotationView.frame.size.height - (image?.size.height)!)/2,
-                                         width: (image?.size.width)!,
-                                         height: (image?.size.height)!)
-            annotationView.insertSubview(headingImageView!, at: 0)
-            headingImageView!.isHidden = true
-        }
     }
 }
+
+//MARK: -Extensions
 
 extension DispatchQueue {
     func asyncAfter(timeInterval: TimeInterval, execute: @escaping () -> Void) {

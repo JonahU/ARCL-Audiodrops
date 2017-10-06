@@ -1,5 +1,5 @@
 //
-//  AudioDrop.swift
+//  Drop.swift
 //  ARKit-CoreLocation Demo
 //
 //  Created by Jonah U on 9/5/17.
@@ -12,14 +12,14 @@ import MediaPlayer
 import SceneKit
 import CoreLocation
 
-
+//Song + Location + UserInfo
 class Drop: LocationNode {
     
-//    let audioPath: URL! = Bundle.main.url(forResource: "song", withExtension: "mp3")
     let song: Song
+    
     let albumArt: UIImage
     
-    let audioNode: SCNNode
+    let sceneKitNode: SCNNode
 
     var scaleRelativeToDistance = false //currently doesnt work, edit SceneLocationView to fix
     
@@ -28,14 +28,20 @@ class Drop: LocationNode {
     
     init(location: CLLocation?, song: Song) {
         self.song = song
-        albumArt = song.artworkImage!
+        let songname = song.title
+        if let img = UIImage(named: songname){
+            albumArt = img
+        }else{
+            print("error fetching album art")
+            albumArt = song.artworkImage!
+        }
         
         let plane = SCNPlane(width: albumArt.size.width / 10, height: albumArt.size.height / 10)
         plane.firstMaterial!.diffuse.contents = albumArt
         plane.firstMaterial!.lightingModel = .constant
         
-        audioNode = SCNNode()
-        audioNode.geometry = plane
+        sceneKitNode = SCNNode()
+        sceneKitNode.geometry = plane
         
         super.init(location: location)
         self.continuallyAdjustNodePositionWhenWithinRange = false
@@ -44,48 +50,10 @@ class Drop: LocationNode {
         billboardConstraint.freeAxes = SCNBillboardAxis.Y
         constraints = [billboardConstraint]
         
-        addChildNode(audioNode)
+        addChildNode(sceneKitNode)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    @objc func playSong(){
-        do{
-            if let url = Bundle.main.url(forResource: "song", withExtension: "mp3"){
-                self.player = try AVAudioPlayer(contentsOf: url)
-                self.player.play()
-            }
-            
-        } catch let error as NSError{
-            print(error.description)
-        }
-    }
-    
-    //TO DO: REORGANISE ME
-//    func playSong() {
-//        song.isPlaying = true
-//
-//        guard let url = Bundle.main.url(forResource: "song", withExtension: "mp3") else {
-//            print("asset not found")
-//            return
-//        }
-//
-//        do {
-//            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-//            try AVAudioSession.sharedInstance().setActive(true)
-//
-//            player = try AVAudioPlayer(contentsOf: url)
-//            guard let player = player else { return }
-//
-//            player.play()
-//        } catch let error {
-//            print(error.localizedDescription)
-//        }
-//    }
-//
-//    func pauseSong() {
-//        song.isPlaying = false
-//    }
 }

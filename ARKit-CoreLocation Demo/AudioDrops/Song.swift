@@ -14,15 +14,13 @@ struct Song{
     //var album: String = ""
     var artworkURL: String = ""
     var artworkImage : UIImage? = UIImage(named: "defaultAlbumArt")
-    var artworkLoaded : Bool = false
-    var isPlaying : Bool = false
+    var artworkLoaded : Bool = false //TODO: -implement properly
     
     init(title: String, artist: String, artworkURL: String){
         self.title = title
         self.artist = artist
         self.artworkURL = artworkURL
         artworkLoaded = false
-        isPlaying = false
     }
 }
 

@@ -7,17 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		220915F51F688700005D1B21 /* 444.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 220915F41F6886FB005D1B21 /* 444.mp3 */; };
+		220915F91F68943B005D1B21 /* ViewController+MKMapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220915F81F68943B005D1B21 /* ViewController+MKMapViewDelegate.swift */; };
 		2234683D1F5729790071F664 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2234683C1F5729790071F664 /* AppDelegate.swift */; };
 		2234683F1F5729790071F664 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2234683E1F5729790071F664 /* ViewController.swift */; };
 		223468421F5729790071F664 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 223468401F5729790071F664 /* Main.storyboard */; };
 		223468441F5729790071F664 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 223468431F5729790071F664 /* Assets.xcassets */; };
 		223468471F5729790071F664 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 223468451F5729790071F664 /* LaunchScreen.storyboard */; };
-		2266EFC21F5F55030076FEF2 /* AudioDrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2266EFC11F5F55030076FEF2 /* AudioDrop.swift */; };
+		2266EFC21F5F55030076FEF2 /* Drop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2266EFC11F5F55030076FEF2 /* Drop.swift */; };
+		226D5D981F69B189007B8D5B /* ViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226D5D971F69B189007B8D5B /* ViewController+Actions.swift */; };
+		226D5D9A1F69BB0B007B8D5B /* NodeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226D5D991F69BB0B007B8D5B /* NodeManager.swift */; };
 		2271AC4A1F572F9100FE3948 /* Pods_ARKit_CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2271AC4B1F572F9100FE3948 /* Pods_ARKit_CoreLocation.framework */; };
 		2271AC4D1F5731B500FE3948 /* ARKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2271AC4C1F5731B500FE3948 /* ARKit.framework */; };
 		2271AC4F1F5731BB00FE3948 /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2271AC4E1F5731BB00FE3948 /* SceneKit.framework */; };
 		2271AC511F5731C300FE3948 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2271AC501F5731C300FE3948 /* MapKit.framework */; };
 		2271AC531F5731C900FE3948 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2271AC521F5731C900FE3948 /* CoreLocation.framework */; };
+		22782A231F6C6E4C00B18A33 /* Leave Your Love Alone.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 22782A221F6C6D9400B18A33 /* Leave Your Love Alone.mp3 */; };
 		227A83D61F631DF000F6678A /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A83D51F631DF000F6678A /* Song.swift */; };
 		227A83D81F6323B600F6678A /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A83D71F6323B600F6678A /* DummyData.swift */; };
 		227A83DA1F6327F500F6678A /* LibraryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A83D91F6327F500F6678A /* LibraryAPI.swift */; };
@@ -32,9 +37,16 @@
 		227FC4521F5734E500A9BEF5 /* SceneLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223468531F572BC30071F664 /* SceneLocationView.swift */; };
 		227FC4531F5734E500A9BEF5 /* SCNNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223468541F572BC30071F664 /* SCNNode+Extensions.swift */; };
 		227FC4541F5734E500A9BEF5 /* SCNVector3+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223468571F572BC40071F664 /* SCNVector3+Extensions.swift */; };
+		228206B71F6C625800757D88 /* Come Together.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 228206B41F6C624D00757D88 /* Come Together.mp3 */; };
+		228206B81F6C625800757D88 /* I Still Love Her.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 228206B31F6C61B200757D88 /* I Still Love Her.mp3 */; };
+		228206BA1F6C635800757D88 /* Candy Shop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 228206B91F6C634C00757D88 /* Candy Shop.mp3 */; };
+		22D96F261F686AF400F8C48B /* MusicPanelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D96F251F686AF400F8C48B /* MusicPanelManager.swift */; };
+		22E6B2911F87E4F000EDBFDF /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E6B2901F87E4F000EDBFDF /* CustomSlider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		220915F41F6886FB005D1B21 /* 444.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 444.mp3; sourceTree = "<group>"; };
+		220915F81F68943B005D1B21 /* ViewController+MKMapViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+MKMapViewDelegate.swift"; sourceTree = "<group>"; };
 		223468391F5729790071F664 /* ARKit-CoreLocation Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ARKit-CoreLocation Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2234683C1F5729790071F664 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2234683E1F5729790071F664 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -52,16 +64,24 @@
 		223468581F572BC40071F664 /* SceneLocationEstimate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneLocationEstimate.swift; sourceTree = "<group>"; };
 		223468591F572BC40071F664 /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
 		2234685A1F572BC40071F664 /* CLLocation+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocation+Extensions.swift"; sourceTree = "<group>"; };
-		2266EFC11F5F55030076FEF2 /* AudioDrop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioDrop.swift; sourceTree = "<group>"; };
+		2266EFC11F5F55030076FEF2 /* Drop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drop.swift; sourceTree = "<group>"; };
+		226D5D971F69B189007B8D5B /* ViewController+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Actions.swift"; sourceTree = "<group>"; };
+		226D5D991F69BB0B007B8D5B /* NodeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeManager.swift; sourceTree = "<group>"; };
 		2271AC4B1F572F9100FE3948 /* Pods_ARKit_CoreLocation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_ARKit_CoreLocation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2271AC4C1F5731B500FE3948 /* ARKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ARKit.framework; path = System/Library/Frameworks/ARKit.framework; sourceTree = SDKROOT; };
 		2271AC4E1F5731BB00FE3948 /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
 		2271AC501F5731C300FE3948 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		2271AC521F5731C900FE3948 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		22782A221F6C6D9400B18A33 /* Leave Your Love Alone.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Leave Your Love Alone.mp3"; sourceTree = "<group>"; };
 		227A83D51F631DF000F6678A /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		227A83D71F6323B600F6678A /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
 		227A83D91F6327F500F6678A /* LibraryAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryAPI.swift; sourceTree = "<group>"; };
 		227A83DD1F63288000F6678A /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		228206B31F6C61B200757D88 /* I Still Love Her.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "I Still Love Her.mp3"; sourceTree = "<group>"; };
+		228206B41F6C624D00757D88 /* Come Together.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Come Together.mp3"; sourceTree = "<group>"; };
+		228206B91F6C634C00757D88 /* Candy Shop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Candy Shop.mp3"; sourceTree = "<group>"; };
+		22D96F251F686AF400F8C48B /* MusicPanelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPanelManager.swift; sourceTree = "<group>"; };
+		22E6B2901F87E4F000EDBFDF /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,15 +120,21 @@
 		2234683B1F5729790071F664 /* ARKit-CoreLocation Demo */ = {
 			isa = PBXGroup;
 			children = (
+				2234683C1F5729790071F664 /* AppDelegate.swift */,
+				223468431F5729790071F664 /* Assets.xcassets */,
+				2296A0541F632DBD00147830 /* AudioDrops */,
+				22E6B2901F87E4F000EDBFDF /* CustomSlider.swift */,
+				2296A0531F632CFC00147830 /* Data Handling */,
+				223468481F5729790071F664 /* Info.plist */,
 				223468451F5729790071F664 /* LaunchScreen.storyboard */,
 				223468401F5729790071F664 /* Main.storyboard */,
-				223468481F5729790071F664 /* Info.plist */,
-				223468431F5729790071F664 /* Assets.xcassets */,
+				22D96F251F686AF400F8C48B /* MusicPanelManager.swift */,
+				226D5D991F69BB0B007B8D5B /* NodeManager.swift */,
+				228206B21F6C616800757D88 /* Songs */,
 				223468501F572B780071F664 /* Source */,
-				2234683C1F5729790071F664 /* AppDelegate.swift */,
 				2234683E1F5729790071F664 /* ViewController.swift */,
-				2296A0541F632DBD00147830 /* AudioDrops */,
-				2296A0531F632CFC00147830 /* Data Handling */,
+				226D5D971F69B189007B8D5B /* ViewController+Actions.swift */,
+				220915F81F68943B005D1B21 /* ViewController+MKMapViewDelegate.swift */,
 			);
 			path = "ARKit-CoreLocation Demo";
 			sourceTree = "<group>";
@@ -142,6 +168,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		228206B21F6C616800757D88 /* Songs */ = {
+			isa = PBXGroup;
+			children = (
+				228206B91F6C634C00757D88 /* Candy Shop.mp3 */,
+				228206B41F6C624D00757D88 /* Come Together.mp3 */,
+				220915F41F6886FB005D1B21 /* 444.mp3 */,
+				228206B31F6C61B200757D88 /* I Still Love Her.mp3 */,
+				22782A221F6C6D9400B18A33 /* Leave Your Love Alone.mp3 */,
+			);
+			path = Songs;
+			sourceTree = "<group>";
+		};
 		2296A0531F632CFC00147830 /* Data Handling */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,7 +193,7 @@
 		2296A0541F632DBD00147830 /* AudioDrops */ = {
 			isa = PBXGroup;
 			children = (
-				2266EFC11F5F55030076FEF2 /* AudioDrop.swift */,
+				2266EFC11F5F55030076FEF2 /* Drop.swift */,
 				227A83D51F631DF000F6678A /* Song.swift */,
 			);
 			path = AudioDrops;
@@ -220,6 +258,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22782A231F6C6E4C00B18A33 /* Leave Your Love Alone.mp3 in Resources */,
+				228206BA1F6C635800757D88 /* Candy Shop.mp3 in Resources */,
+				228206B71F6C625800757D88 /* Come Together.mp3 in Resources */,
+				228206B81F6C625800757D88 /* I Still Love Her.mp3 in Resources */,
+				220915F51F688700005D1B21 /* 444.mp3 in Resources */,
 				223468471F5729790071F664 /* LaunchScreen.storyboard in Resources */,
 				223468441F5729790071F664 /* Assets.xcassets in Resources */,
 				223468421F5729790071F664 /* Main.storyboard in Resources */,
@@ -239,13 +282,18 @@
 				227A83DA1F6327F500F6678A /* LibraryAPI.swift in Sources */,
 				227FC44D1F5734E500A9BEF5 /* FloatingPoint+Radians.swift in Sources */,
 				227FC44E1F5734E500A9BEF5 /* LocationManager.swift in Sources */,
-				2266EFC21F5F55030076FEF2 /* AudioDrop.swift in Sources */,
+				226D5D981F69B189007B8D5B /* ViewController+Actions.swift in Sources */,
+				2266EFC21F5F55030076FEF2 /* Drop.swift in Sources */,
 				227FC44F1F5734E500A9BEF5 /* LocationNode.swift in Sources */,
 				227FC4501F5734E500A9BEF5 /* SceneLocationEstimate.swift in Sources */,
 				227FC4511F5734E500A9BEF5 /* SceneLocationEstimate+Extensions.swift in Sources */,
 				227A83D61F631DF000F6678A /* Song.swift in Sources */,
+				22D96F261F686AF400F8C48B /* MusicPanelManager.swift in Sources */,
+				22E6B2911F87E4F000EDBFDF /* CustomSlider.swift in Sources */,
+				226D5D9A1F69BB0B007B8D5B /* NodeManager.swift in Sources */,
 				227FC4521F5734E500A9BEF5 /* SceneLocationView.swift in Sources */,
 				227FC4531F5734E500A9BEF5 /* SCNNode+Extensions.swift in Sources */,
+				220915F91F68943B005D1B21 /* ViewController+MKMapViewDelegate.swift in Sources */,
 				227A83DE1F63288000F6678A /* HTTPClient.swift in Sources */,
 				227FC4541F5734E500A9BEF5 /* SCNVector3+Extensions.swift in Sources */,
 				2234683F1F5729790071F664 /* ViewController.swift in Sources */,
